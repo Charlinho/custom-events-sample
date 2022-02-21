@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Custom Events</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1 id="header">Custom Events</h1>
+        
+        <script>
+            const h1 = document.getElementById('header');
+
+            h1.addEventListener('headerChanged', function (event) {
+                h1.style.color = event.detail.textColor;
+            });
+
+            function changeColor(color) {
+                const customEvent = new CustomEvent('headerChanged', {
+                    detail: {
+                        textColor: color
+                    }
+                });
+
+                h1.dispatchEvent(customEvent);
+            }
+        </script>
+    </body>
+</html>
